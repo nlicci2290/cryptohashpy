@@ -8,6 +8,14 @@ Use the setup.py script to install this C extension.
 python setup.py install
 ```
 
+## Running the tests
+The unit tests are run with pytest.
+
+Navigate to the cryptohash folder and run the md5_unit_test.py file
+```bash
+pytest md5_unit_test.py
+```
+
 ## Usage
 
 ```python
