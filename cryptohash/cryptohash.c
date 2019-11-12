@@ -1,3 +1,5 @@
+#define PY_SSIZE_T_CLEAN size_t
+
 #include <Python.h>
 #include "md5.h"
 
@@ -20,12 +22,13 @@ static PyObject *cryptohashMd5(PyObject *self, PyObject *args)
 {
 	PyObject *retval = NULL;
 	const char *inputStr = NULL;
+	Py_ssize_t size = 0;
 	struct MD5Context md5Context;
 	unsigned char retbuf[33];
 	unsigned char checksum[16];
 	int i, j;
 
-	if (!PyArg_ParseTuple(args, "y", &inputStr)) {
+	if (!PyArg_ParseTuple(args, "s#", &inputStr, &size)) {
 		return retval;
 	}
 	
