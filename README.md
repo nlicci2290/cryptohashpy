@@ -24,6 +24,11 @@ import cryptohashpy
 cryptohashpy.md5(b'word') # returns 'C47D187067C6CF953245F128B5FDE62A'
 ```
 
+## Built With
+* Tools installed with Visual Studio 2019
+* gcc 4.8
+
+
 ## Supported environments
 This C extension module is supported in both python 2 and 3 on Linux and Windows. 
 Module was tested on Windows 10 and CentOS 7.
