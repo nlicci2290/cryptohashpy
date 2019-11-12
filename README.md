@@ -1,5 +1,5 @@
 # cryptohashpy
-Commonly used hash functions
+A python C extension module containing commonly used hash functions.
 
 ## Installation
 Use the setup.py script to install this C extension.
