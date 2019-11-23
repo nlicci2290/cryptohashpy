@@ -1,7 +1,11 @@
 #include "main_cryptohash.h"
 #include "md5.h"
 
-static unsigned char to_str(unsigned char input) {
+#ifdef WIN32
+static __inline unsigned char to_str(unsigned char input) {
+#else
+static inline unsigned char to_str(unsigned char input) {
+#endif
 	if (input < 10) {
 		input += 48;
 	}
@@ -26,11 +30,17 @@ PyObject *cryptohashMd5(PyObject *self, PyObject *args)
 		return retval;
 	}
 
+	if (!size) {
+		retval = Py_BuildValue("s", "D41D8CD98F00B204E9800998ECF8427E");
+
+		return retval;
+	}
+
 	memset(checksum, 0, sizeof(checksum));
 	memset(retbuf, 0, sizeof(retbuf));
 
 	MD5Init(&md5Context);
-	MD5Update(&md5Context, (const unsigned char *)inputStr, strlen(inputStr));
+	MD5Update(&md5Context, (const unsigned char *) inputStr, size);
 	MD5Final(checksum, &md5Context);
 
 	// Convert hex value to a char
