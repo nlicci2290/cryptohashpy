@@ -1,0 +1,1 @@
+PyObject *cryptohashMd5(PyObject *self, PyObject *args);
